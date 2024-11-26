@@ -1,0 +1,65 @@
+<main class="container py-5">
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6 text-center">
+        <h2 class="display-4 text-primary">Todo List</h2>
+        <p class="lead text-secondary">Organize your tasks with style!</p>
+      </div>
+    </div>
+  
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-8 d-flex">
+        <input
+          [(ngModel)]="newTask"
+          placeholder="Enter your task"
+          class="form-control form-control-lg border-primary mr-2"
+          type="text"
+        />
+        <button
+          class="btn btn-lg btn-success text-white"
+          (click)="addTask()"
+        >
+          <i class="fas fa-plus"></i> Add Task
+        </button>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-4" *ngFor="let todoItem of todoList; let i = index">
+        <div class="card shadow-lg mb-4">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Google_Tasks_2021.svg/640px-Google_Tasks_2021.svg.png"
+            class="card-img-top rounded-top"
+            alt="Task Icon"
+          />
+          <div class="card-body bg-light">
+            <h5 class="card-title text-center text-dark">Your Task</h5>
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                (change)="toggleComplete(i)"
+                type="checkbox"
+                [(ngModel)]="todoItem.completed"
+                id="checkbox-{{i}}"
+              />
+              <label class="form-check-label" for="checkbox-{{i}}">
+                Mark as Completed
+              </label>
+            </div>
+            <p class="card-text text-secondary">
+              {{ todoItem.task }}
+            </p>
+            <div class="d-flex justify-content-between">
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deleteTask(todoItem.id)"
+              >
+                <i class="fas fa-trash"></i> Delete
+              </button>
+              <span *ngIf="todoItem.completed" class="badge bg-success text-white">Completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
