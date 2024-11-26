@@ -1,0 +1,39 @@
+/* Asegura que el documento ocupe toda la altura de la ventana */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal que usa flexbox */
+.app-container {
+    display: flex;
+    flex-direction: column; /* Organiza los componentes de arriba hacia abajo */
+    height: 100%; /* Asegura que ocupe toda la altura */
+}
+
+/* Contenedor que engloba sidebar y el contenido principal */
+.content-wrapper {
+    display: flex;
+    flex: 1; /* Esto permite que este contenedor ocupe todo el espacio disponible */
+}
+
+/* El sidebar se queda fijo a la izquierda */
+app-sidebar {
+    width: 250px; /* Ajusta el ancho del sidebar */
+    background-color: #34495e; /* Similar al color del sidebar */
+    height: 100%; /* Asegura que ocupe toda la altura */
+    position: fixed; /* Fija el sidebar al lado izquierdo */
+}
+
+/* El contenido principal ocupará el resto del espacio */
+.main-content {
+    margin-left: 250px; /* Asegura que el contenido no se sobreponga con el sidebar */
+    flex: 1;
+    padding: 20px;
+}
+
+/* Asegura que el footer siempre se quede debajo del contenido */
+app-footer {
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}

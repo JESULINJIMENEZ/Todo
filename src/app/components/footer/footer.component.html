@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlace a FontAwesome para los iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Estilos para el Footer */
+        footer {
+            background-color: #2c3e50; /* Fondo oscuro similar al navbar y sidebar */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #e74c3c;
+        }
+
+        footer .social-icons {
+            display: flex;
+            justify-content: center;  /* Centrar los iconos */
+            margin-top: 10px;
+        }
+
+        footer .social-icons i {
+            margin: 0 15px;
+        }
+
+        footer p {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividad para dispositivos móviles */
+        @media (max-width: 768px) {
+            footer a {
+                font-size: 1.5rem; /* Reducir tamaño de los iconos en pantallas pequeñas */
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Asegurarse de que el footer no se superponga con el contenido */
+        body {
+            padding-bottom: 60px; /* Agregar espacio inferior para el footer en pantallas grandes */
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 80px; /* Más espacio en pantallas móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Aquí va el contenido principal de tu sitio (navbar, sidebar, etc.) -->
+
+<!-- Footer con enlaces a redes sociales -->
+<footer>
+    <div class="social-icons">
+        <!-- GitHub -->
+        <a href="https://github.com/JESULINJIMENEZ" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/jesus-jimenez-39a813322/" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/jesulin_jimenez/" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <p>&copy; 2024 Todos los derechos reservados</p>
+</footer>
+
+<!-- Enlace a Bootstrap JS y dependencias -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
