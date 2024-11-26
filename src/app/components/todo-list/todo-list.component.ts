@@ -25,6 +25,7 @@ export class TodoListComponent {
         }
         this.todoList.push(newTodoItem);
         console.log(this.todoList);
+        this.newTask = '';
         
       }
     }
