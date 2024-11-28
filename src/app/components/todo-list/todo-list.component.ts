@@ -13,7 +13,9 @@ import { CommonModule } from '@angular/common';
 })
 export class TodoListComponent {
   todoList: TodoItem[] = [];
-  newTask: string = '';
+  newTaskTitle: string = ''; // Nuevo campo para el título
+  newTaskDescription: string = ''; // Nuevo campo para la descripción
+  editingTaskIndex: number | null = null; // Índice de la tarea que está en edición
 
   constructor() {
     // Cargar las tareas desde localStorage al iniciar el componente
@@ -21,16 +23,27 @@ export class TodoListComponent {
   }
 
   addTask() {
-    if (this.newTask.trim() !== '') {
-      const newTodoItem: TodoItem = {
-        id: Date.now(),
-        task: this.newTask,
-        completed: false
-      };
-      this.todoList.push(newTodoItem);
+    if (this.newTaskTitle.trim() !== '' && this.newTaskDescription.trim() !== '') {
+      if (this.editingTaskIndex !== null) {
+        // Si estamos editando una tarea, actualizamos la tarea
+        this.todoList[this.editingTaskIndex].title = this.newTaskTitle;
+        this.todoList[this.editingTaskIndex].description = this.newTaskDescription;
+        this.editingTaskIndex = null; // Desactivamos el modo de edición
+      } else {
+        // Si no estamos editando, creamos una nueva tarea
+        const newTodoItem: TodoItem = {
+          id: Date.now(),
+          title: this.newTaskTitle,
+          description: this.newTaskDescription,
+          completed: false
+        };
+        this.todoList.push(newTodoItem);
+      }
+
       this.saveTasks();  // Guardar las tareas en localStorage
       console.log(this.todoList);
-      this.newTask = '';
+      this.newTaskTitle = ''; // Limpiar título
+      this.newTaskDescription = ''; // Limpiar descripción
     }
   }
 
@@ -43,6 +56,14 @@ export class TodoListComponent {
   deleteTask(id: number) {
     this.todoList = this.todoList.filter(item => item.id !== id);
     this.saveTasks();  // Guardar las tareas en localStorage después de eliminar
+  }
+
+  // Activar modo edición
+  editTask(index: number) {
+    const task = this.todoList[index];
+    this.newTaskTitle = task.title;
+    this.newTaskDescription = task.description;
+    this.editingTaskIndex = index; // Activar el modo edición
   }
 
   // Guardar las tareas en localStorage
